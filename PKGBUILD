@@ -5,15 +5,15 @@ pkgrel=1
 epoch=
 pkgdesc="Terraform version manager inspired by rbenv"
 arch=("x86_64")
-url="https://github.com/kamatama41/tfenv"
+url="https://github.com/tfutils/tfenv"
 license=('MIT')
 groups=()
-depends=("terraform")
+depends=()
 makedepends=()
 checkdepends=()
 optdepends=()
 provides=("tfenv")
-source=("git://github.com/kamatama41/tfenv.git")
+source=("git://github.com/tfutils/tfenv.git")
 md5sums=("SKIP")
 validpgpkeys=()
 
@@ -24,6 +24,7 @@ package() {
 	echo $srcdir
 	ls -lah
 	install -m755 "bin/${pkgname}" "${pkgdir}/usr/local/bin/${pkgname}"
+	install -m755 "bin/terraform" "${pkgdir}/usr/local/bin/terraform"
 	for i in `ls ${srcdir}/${pkgname}/libexec/`; do
 		install -m755 "${srcdir}/${pkgname}/libexec/$i" "${pkgdir}/usr/local/libexec/$i"
 	done
